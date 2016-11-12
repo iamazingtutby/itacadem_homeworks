@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>homework 1</h1>
+
+    <input type="button" value="количество гласных" onclick="vowel()">
+
+    <input type="button" value="Анкета" onclick="anketa()">
+</div>
+
+
+<script>
+    function vowel() {
+        var myString = prompt('Введите текст', '');
+        var myArray = myString.split('');
+        var count = 0;
+        for(var i = 0; i<myArray.length; i++){
+            if(myArray[i] == 'у' || myArray[i] == 'е' || myArray[i] == 'ы' || myArray[i] == 'а' || myArray[i] == 'о' || myArray[i] == 'э' || myArray[i] == 'я' || myArray[i] == 'и' || myArray[i] == 'ю'){
+                count++;
+            }
+        }
+        count = 'Гласных букв - ' + count;
+        alert(count);
+
+        console.log(myArray);
+    }
+
+    function anketa(){
+        var yourName = prompt('Ваше имя?', '');
+        var yourSecondName = prompt('Ваше отчество?', '');
+        var yourSurname = prompt('Ваша фамилия?', '');
+        var yourAge = prompt('Ваш возраст? (Введите число)', '');
+        var yourAgeAfter5 = 0;
+        var yourAgeInDays = 0;
+        yourAge = +yourAge;
+        var yourGender = confirm('Ваш пол мужской?');
+        var pension = '';
+        var yourAgeNew = '';
+
+
+        yourName = 'Ваше ФИО: ' + yourSurname + ' ' + yourName + ' ' + yourSecondName;
+
+        if (yourAge){
+            yourAgeNew = 'Ваш возраст в годах: ' + yourAge;
+        } else {
+            while(!yourAge){
+                yourAge = prompt('Ваш возраст? (Введите число)', '');
+                yourAge = +yourAge;
+                yourAgeNew = 'Ваш возраст в годах: ' + yourAge;
+            }
+        }
+
+        yourAgeAfter5 = yourAge + 5;
+        yourAgeInDays = yourAge * 365;
+
+        yourAgeAfter5 = 'Через 5 лет Вам будет: ' + yourAgeAfter5;
+        yourAgeInDays = 'Ваш возраст в днях: ' + yourAgeInDays;
+
+        if(((yourGender == true) && (yourAge >= 60)) || ((yourGender == false) && (yourAge >= 55))){
+            pension = 'Да';
+        } else if (((yourGender == true) && (yourAge < 60)) || (yourGender == false) && (yourAge < 55)){
+            pension = 'нет';
+        }
+
+        pension = 'Вы на пенсии: ' + pension;
+
+
+        alert(yourName + '\n' + yourAgeNew + '\n' + yourAgeAfter5 + '\n' + yourAgeInDays + '\n' + pension);
+
+
+
+    }
+</script>
+
+</body>
+</html>
