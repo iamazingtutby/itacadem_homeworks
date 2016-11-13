@@ -8,11 +8,41 @@
 <body>
 
 <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/itacadem_homeworks/hw1.html">дз №1</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
     <h1>homework 1</h1>
 
     <input type="button" value="количество гласных" onclick="vowel()">
 
     <input type="button" value="Анкета" onclick="anketa()">
+
+    <input type="button" value="количество цифр больше семи" onclick="count1()">
+
+    <input type="button" value="Есть ли семерка в массиве" onclick="count2()">
+
+    <input type="button" value="Разность наибольшего и наименьшего" onclick="count3()">
+
+    <input type="button" value="Совпадения в двух массивах" onclick="count4()">
+
+    <input type="button" value="Элемент больше предыдущих" onclick="count5()">
+
+    <input type="button" value="Элемент больше средн арифметического" onclick="count6()">
+
+    <input type="button" value="Есть ли 0" onclick="count7()">
+
+    <input type="button" value="каждое след - средн арифм предыдущих" onclick="count8()">
+
+
 </div>
 
 
@@ -69,14 +99,215 @@
             pension = 'нет';
         }
 
+        if(yourGender == true){
+            yourGender = 'Ваш пол: Мужской';
+        } else {
+            yourGender = 'Ваш пол: Женский';
+        }
+
         pension = 'Вы на пенсии: ' + pension;
 
-
-        alert(yourName + '\n' + yourAgeNew + '\n' + yourAgeAfter5 + '\n' + yourAgeInDays + '\n' + pension);
+        alert(yourName + '\n' + yourAgeNew + '\n' + yourAgeAfter5 + '\n' + yourAgeInDays + '\n' + yourGender + '\n' + pension);
 
 
 
     }
+
+    function count1(){
+        var numbers = prompt('Введите числа , разделенные пробелом', '');
+        var arrayOfNumbers = numbers.split(' ');
+        var count = 0;
+        var number;
+
+        for( var i = 0; i<arrayOfNumbers.length; i++){
+            number = arrayOfNumbers[i];
+            parseFloat(number);
+
+            if(number > 7){
+                count++;
+            }
+
+        }
+        alert(count);
+        console.log(arrayOfNumbers);
+    }
+
+    function count2(){
+        var myString = prompt('Введите числа через пробел', '');
+        var myArray = myString.split(' ');
+        var answer = false;
+        var count = 0;
+
+        for (var i = 0; i<myArray.length; i++){
+            parseFloat(myArray[i]);
+            if(myArray[i] == 7){
+                answer = true;
+                count++;
+            }
+        }
+
+        if(answer){
+            alert('число 7 встречалось ' + count + ' раз(а)');
+        } else {
+            alert('Число 7 не встречалось');
+        }
+    }
+
+    function count3(){
+        var numbers = prompt('Введите числа через пробел', '');
+        var myArray = numbers.split(' ');
+        var max = myArray[0];
+        var min = myArray[0];
+
+        for(var i = 0; i<myArray.length; i++) {
+            var num = myArray[i];
+            num = +num;
+                if(max < num){
+                    max = num;
+                }
+                if(min > num){
+                    min = num;
+                }
+        }
+
+        alert('max ' + max);
+        alert('min ' + min);
+        alert('Разность - ' + (max - min));
+
+        console.log(myArray);
+        console.log('max', max);
+        console.log('min', min);
+    }
+
+    function count4() {
+        var str1 = prompt('Введите 10 чисел через запятую для первого массива', '');
+        var str2 = prompt('Введите 10 чисел через запятую для второго массива', '');
+
+        var num1 = 0;
+        var num2 = 0;
+
+        var countMore = 0;
+        var countLess = 0;
+        var countEqual = 0;
+
+        var arr1 = str1.split(',');
+        var arr2 = str2.split(',');
+        arr1.length = 10;
+        arr2.length = 10;
+
+        for(var i = 0; i < 10; i++){
+            num1 = arr1[i];
+            arr1[i] = +num1;
+
+            num2 = arr2[i];
+            arr2[i] = +num2;
+
+            if(arr1[i] == arr2[i]){
+                countEqual++;
+            }
+            if(arr1[i] > arr2[i]){
+                countMore++;
+            }
+            if(arr1[i] < arr2[i]){
+                countLess++;
+            }
+        }
+
+        console.log(arr1);
+        console.log(arr2);
+        alert('Совпадения - ' + countEqual + '\n' + 'Больше - ' + countMore + '\n' + 'Меньше - ' + countLess);
+
+    }
+
+    function count5() {
+        var arr = [5,2,6,5,9,8,7,5,6,12,2,2];
+        var max = arr[0];
+        console.log(arr);
+
+        for(var i = 0; i<arr.length; i++){
+
+            if(max < arr[i]){
+                max = arr[i];
+                alert(max);
+            }
+
+        }
+        console.log(max);
+    }
+
+    function count6() {
+        var nums = prompt('Введите числа через запятую', '');
+        var arr = nums.split(',');
+        var num = 0;
+        var sum = 0;
+        var average = 0;
+        var count = 0;
+
+        for(var i = 0; i<arr.length; i++){
+            num = +arr[i];
+            arr[i] = num;
+            sum += arr[i];
+        }
+
+        average = sum / arr.length;
+
+        for(var i = 0; i<arr.length; i++){
+            if(arr[i]>average){
+                count++;
+            }
+        }
+
+
+        console.log(arr);
+        console.log('сумма всех эл-тов ', sum);
+        console.log('ср арифм ', average);
+        alert('эл-тов больше ср арифметического - ' + count);
+    }
+    
+    function count7() {
+        var nums = prompt('Введите числа через запятую', '');
+        var num = 0;
+        var arr = nums.split(',');
+        var count = 0;
+        var ind = 0;
+
+        for( var i = 0; i<arr.length; i++){
+            num = +arr[i];
+            arr[i] = num;
+            if(arr[i] == 0){
+                count++;
+            }
+        }
+        for( var j = 0; j<arr.length; j++){
+            if(arr[j] == 0){
+                ind = j;
+                break;
+            }
+        }
+        console.log(arr);
+        alert('ноль встречался ' + count + ' раз(а)' + '\n' + 'первый раз под индексом ' + ind);
+    }
+
+    function count8() {
+
+        var arr1 = [2,5,4,8,9,6,5,2,2,7];
+        var arr2 = [];
+        var sum = 0;
+        var average = arr2.length;
+
+        for(var i = 0; i<arr1.length; i++){
+            sum += arr1[i];
+            debugger;
+            arr2[i] = (sum) / i;
+//            arr2.unshift(num);
+        }
+
+        console.log(arr1);
+        console.log(arr2);
+
+    }
+
+
 </script>
 
 </body>
