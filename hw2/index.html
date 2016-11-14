@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="js/hashStorage.js"></script>
+    <script src="js/functions.js"></script>
 </head>
 <body>
 
@@ -20,6 +24,14 @@
             </ul>
         </div>
     </nav>
+
+    <h1>Drinks</h1>
+    <div class="jumbotron">
+        <input type="button" value="Ввод информации о напитке" onclick="DrinkStorage.addValue()">
+        <input type="button" value="Получение информации о напитке" onclick="DrinkStorage.getValue()">
+        <input type="button" value="Удаление информации о напитке">
+        <input type="button" value="Перечень всех напитков">
+    </div>
 </div>
 
 </body>
