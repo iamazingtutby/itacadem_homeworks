@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <ul class="nav navbar-nav">
+        <li>
+            <a href="/itacadem_homeworks/hw1.html">дз №1</a>
+        </li>
+        <li>
+            <a href="/itacadem_homeworks/hw2/index.html">дз №2</a>
+        </li>
+        <li>
+            <a href="/itacadem_homeworks/hw3/index.html">дз №3</a>
+        </li>
+    </ul>
+    <h1>hw</h1>
+    <div class="jumbotron">
+        <button class="btn btn-success" onclick="row()">
+            Задача 1
+        </button>
+
+        <button class="btn btn-primary" onclick="task2()">
+            Задача 2
+        </button>
+    </div>
+
+    <div class="well">
+        <h4> Пример текста </h4>
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nulla nibh, eleifend vitae est et,
+        tempor fermentum ligula! Morbi tristique lobortis est, id venenatis elit pulvinar nec. Sed ullamcorper
+        id arcu sed interdum. Lorem vestibulum fermentum ligula eget blandit. Nullam interdum ligula id hendrerit
+        volutpat. Suspendisse potenti? Cras a hendrerit odio, eget efficitur ligula. Vestibulum ante ipsum
+        primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque rhoncus, nunc vel
+        ullamcorper pellentesque, quam magna finibus massamass. Lorem aliquet nisi tortor malesuada lacus. Pellentesque
+        commodo porttitor libero, Lorem tristique ipsum rhoncus in! Lorem lobortis pharetra metus, a tempor arcu laoreet
+        at. Nunc vel sapien nec nulla eleifend imperdiet? Etiam ac lorem facilisis, lobortis turpis ac, consectetur
+        odio. Mauris sit amet sapien purus. Nam accumsan vitae elit eget mattis.
+    </div>
+</div>
+
+
+<script>
+    function row() {
+        var a = prompt('Введите строку', '');
+        var b = prompt('Введите число', '');
+        var str = '';
+
+        var func = function (a,b) {
+            b = +b;
+            console.log(a);
+            if(a.length > b){
+                str = a.substr(0,b);
+                str = str + '...';
+            } else{
+               str = a;
+            }
+            alert(str);
+
+            return;
+
+        };
+
+        return func(a,b);
+
+    }
+
+
+    function task2() {
+        var text = prompt('Введите текст, разделите предложения знаками - \'?\' или \'!\' или \'.\' ', '');
+
+        var words = 0;
+        var letters = 0;
+        var row = '';
+        var counter = 0;
+
+        var arr1 = text.split(' ');
+        text = text.split('!').join('===').split('.').join('===').split('?').join('===');
+
+//        console.log(arr1);
+        var wordArr1 = arr1[0];
+        for( var a = 0; a<arr1.length; a++){
+            if(wordArr1 == arr1[a]){
+                counter++;
+            }
+        }
+
+        console.log('самое частое слово - ', wordArr1, 'сколько раз ', counter);
+
+        var arr = text.split('===');
+
+        for(var i = 0; i<arr.length; i++){
+            row = arr[i];
+            words = row.split(' ');
+            for (var j=0;j<words.length;j++){
+                if(words[j] == ''){
+                    words.splice(j,1);
+                }
+            }
+            letters = words.join('');
+            letters = letters.length;
+            words = words.length;
+
+            console.log('Строка - ', row, '; В ней слов - ', words, '; в ней букв - ', letters);
+        }
+
+    }
+
+
+
+</script>
+
+</body>
+</html>
