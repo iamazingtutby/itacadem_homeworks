@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="/itacadem_homeworks/hw1.html">дз №1</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw2/index.html">дз №2</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw3/index.html">дз №3</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw3/createPage.html">дз №4</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div id="wrap"></div>
+</div>
+
+<script>
+    var elements = [
+        {tag: 'div', options: {attributes: {id: 'div1', class: 'class1'}, children: [
+            {tag: 'ul', options: {attributes: {style: 'display: block', class: 'list-group'}, children: [
+                {tag: 'li', options: {attributes: {class: 'list-group-item'}, children: [
+                    {tag: 'span', options: {text: 'text'}}
+                ]}},
+                {tag: 'li', options: {attributes: {class: 'list-group-item'}, children: [
+                    {tag: 'span', options: {text: 'text'}}
+                ]}},
+                {tag: 'li', options: {attributes: {class: 'list-group-item'}, children: [
+                    {tag: 'span', options: {text: 'text'}}
+                ]}}
+            ]}},
+            {tag: 'p', options: {text: 'text text text'}},
+            {tag: 'form', options: {attributes: {id: 'form1', name: 'form', method: 'POST', action: '/process'}, children: [
+                {tag: 'div', options: {attributes: {class: 'form-group'}, children: [
+                    {tag: 'label', options: {attributes: {for: 'i1'}, text: 'label1'}},
+                    {tag: 'input', options: {attributes: {value: 'test', type: 'text', class: 'form-control', id: 'i1'}}}
+                ]}},
+                {tag: 'div', options: {attributes: {class: 'form-group'}, children: [
+                    {tag: 'label', options: {attributes: {for: 'i2'}, text: 'label2'}},
+                    {tag: 'input', options: {attributes: {value: 'test', type: 'text', class: 'form-control', id: 'i2'}}}
+                ]}},
+                {tag: 'div', options: {attributes: {class: 'form-group'}, children: [
+                    {tag: 'input', options: {attributes: {placeholder: 'test', class: 'form-control', type: 'text'}}}
+                ]}},
+                {tag: 'div', options: {attributes: {class: 'checkbox'}, children: [
+                    {tag: 'label', options: { children: [
+                        {tag: 'input', options: {attributes: {value: '1', type: 'checkbox', checked: 'checked'}}}
+                    ], text: 'Check me' }}
+                ]}},
+
+                {tag: 'br'},
+
+                {tag: 'div', options: {attributes: {class: 'form-group'}, children: [
+                    {tag: 'select', options: {children: [
+                        {tag: 'option', options: {attributes: {value: 1}, text: 'op1'}},
+                        {tag: 'option', options: {attributes: {value: 1}, text: 'op2'}},
+                        {tag: 'option', options: {attributes: {value: 1}, text: 'op3'}},
+                        {tag: 'option', options: {attributes: {value: 1}, text: 'op4'}}
+                    ]}}
+                ]}}
+            ]}}
+        ]}}
+    ];
+
+    function constructor(arr, parent) {
+        for(var i=0; i<arr.length; i++){
+            var tag = arr[i].tag;
+            var elem = document.createElement(tag);
+            parent.appendChild(elem);
+//            console.log(elem);
+
+            if('attributes' in arr[i]['options']){
+                var _arr = arr[i]['options']['attributes'];
+                for(var key in _arr)
+                    elem.setAttribute(key , _arr[key])
+            }
+
+            if('children' in arr[i]['options']){
+                constructor(arr[i]['options']['children'], elem)
+            }
+
+            if('text' in arr[i]['options']){
+                var text = document.createTextNode(arr[i]['options'].text);
+                elem.appendChild(text);
+            }
+
+        }
+
+    }
+
+    var _div = document.getElementById('wrap');
+    constructor(elements, _div);
+
+
+</script>
+
+</body>
+</html>
