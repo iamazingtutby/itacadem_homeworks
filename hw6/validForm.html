@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .asterisk{
+            display: block;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            color: #a94442;
+            right: 20px;
+            top: 5px;
+        }
+        .asterisk:before{
+            content: '*';
+            display: block;
+        }
+        .error-message{
+            color: #a94442;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="/itacadem_homeworks/hw1.html">дз №1</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw2/index.html">дз №2</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw3/index.html">дз №3</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw4/createPage.html">дз №4</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <form name="valid-form" method="post" action="http://fe.it-academy.by/TestForm.php "></form>
+</div>
+
+<script>
+
+    var formArr = [
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'div', options: {attributes: {class: 'col-sm-offset-2 col-sm-10'}, children: [
+                {tag: 'p', options: {attributes: {class: 'form-control-static'}, text: 'Поля, помеченные * - обязательные!'}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i1', class: 'col-sm-2 control-label'}, text: 'Разработчики'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'input', options: {attributes: {type: 'text',  name: 'devs', placeholder: 'Максимум 10 символов',  class: 'form-control col-sm-8', id: 'i1'}}},
+                {tag: 'span', options: {attributes: {class: 'asterisk'}}},
+                {tag: 'div', options: {attributes: {class: 'error-message'}}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i2', class: 'col-sm-2 control-label'}, text: 'Название сайта'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'input', options: {attributes: {type: 'text', class: 'form-control col-sm-8', id: 'i2'}}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i3', class: 'col-sm-2 control-label'}, text: 'UPL сайта'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'input', options: {attributes: {type: 'text', class: 'form-control col-sm-8', id: 'i3'}}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i4', class: 'col-sm-2 control-label'}, text: 'Дата запуска сайта'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'input', options: {attributes: {type: 'text', class: 'form-control col-sm-8', id: 'i4'}}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i5', class: 'col-sm-2 control-label'}, text: 'Посетителей в сутки'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'input', options: {attributes: {type: 'text', class: 'form-control col-sm-8', id: 'i5'}}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i6', class: 'col-sm-2 control-label'}, text: 'E-mail для связи'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'input', options: {attributes: {type: 'text', name: 'email', class: 'form-control col-sm-8', id: 'i6'}}},
+                {tag: 'span', options: {attributes: {class: 'asterisk'}}},
+                {tag: 'div', options: {attributes: {class: 'error-message'}}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i7', class: 'col-sm-2 control-label'}, text: 'Рубрика каталога'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'select', options: {attributes: {class: 'form-control col-sm-8', id: 'i7'}, children: [
+                    {tag: 'option', options: {attributes: {value: 1}, text: 'Здоровье'}},
+                    {tag: 'option', options: {attributes: {value: 2}, text: 'Уют'}},
+                    {tag: 'option', options: {attributes: {value: 3, selected: ''}, text: 'Бытовая техника'}}
+                ]}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i8', class: 'col-sm-2 control-label'}, text: 'Размещение'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'div', options: {attributes: {class: 'radio', id: 'i8'}, children: [
+                    {tag: 'label', options: {attributes: {class: 'radio-inline'}, children: [
+                        {tag: 'input', options: {attributes: {value: '1', type: 'radio', name: 'i8'}}}
+                    ], text: 'Бесплатное' }},
+                    {tag: 'label', options: {attributes: {class: 'radio-inline'}, children: [
+                        {tag: 'input', options: {attributes: {value: '2', type: 'radio', name: 'i8'}}}
+                    ], text: 'Платное' }},
+                    {tag: 'label', options: {attributes: {class: 'radio-inline'}, children: [
+                        {tag: 'input', options: {attributes: {value: '3', type: 'radio', name: 'i8'}}}
+                    ], text: 'VIP' }}
+                ]}},
+                {tag: 'span', options: {attributes: {class: 'asterisk'}}},
+                {tag: 'div', options: {attributes: {class: 'error-message'}}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i9', class: 'col-sm-2 control-label'}, text: 'Разрешить отзывы'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'input', options: {attributes: {type: 'checkbox', id: 'i9', checked: 'checked'}}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'label', options: {attributes: {for: 'i10', class: 'col-sm-2 control-label'}, text: 'Описание сайта'}},
+            {tag: 'div', options: {attributes: {class: 'col-sm-8'}, children: [
+                {tag: 'textarea', options: {attributes: {class: 'form-control', id: 'i10', name: 'description', rows: '3', resize: 'none'}}},
+                {tag: 'span', options: {attributes: {class: 'asterisk'}}},
+                {tag: 'div', options: {attributes: {class: 'error-message'}}}
+            ]}}
+        ]}},
+        {tag: 'div', options: {attributes: {class: 'form-group col-sm-10'}, children: [
+            {tag: 'div', options: {attributes: {class: 'col-sm-offset-2 col-sm-10'}, children: [
+                {tag: 'button', options: {attributes: {class: 'btn btn-default', type: 'submit'}, text: 'Опубликовать'}}
+            ]}}
+        ]}}
+    ];
+
+    function formConstructor(arr, parent) {
+        for(var i=0; i<arr.length; i++){
+            var tag = arr[i].tag;
+            var elem = document.createElement(tag);
+            parent.appendChild(elem);
+
+            if('options' in arr[i]){
+
+                if('attributes' in arr[i]['options']){
+                    var _arr = arr[i]['options']['attributes'];
+                    for(var key in _arr)
+                        elem.setAttribute(key , _arr[key])
+                }
+
+                if('children' in arr[i]['options']){
+                    formConstructor(arr[i]['options']['children'], elem)
+                }
+
+                if('text' in arr[i]['options']){
+                    var text = document.createTextNode(arr[i]['options'].text);
+                    elem.appendChild(text);
+                }
+
+            }
+        }
+    }
+
+    var _form = document.forms['valid-form'];
+    formConstructor(formArr, _form);
+
+
+
+
+
+
+    var inpDevs = document.getElementById('i1');
+
+    var inpEmail = _form.elements.email;
+
+    var placement = _form.elements.i8;
+    var placementTextError = document.createTextNode('Необходимо выбрать тип размещения');
+
+    var _description = _form.elements.description;
+    var descParent = _description.offsetParent;
+    var descErrorText = document.createTextNode('Придумайте подробное описание');
+
+
+    // поле Разработчики - макс длина - 10
+    inpDevs.addEventListener('change', valDevs, false);
+    function valDevs (){
+        var inpDevsVal = inpDevs.value;
+        if(inpDevsVal.length > 10) {
+            inpDevs.offsetParent.classList.add('has-error');
+            var errorMessageText = document.createTextNode(inpDevs.getAttribute('placeholder'));
+            if(!(inpDevs.offsetParent.lastChild.innerHTML.length)){
+                inpDevs.offsetParent.lastChild.appendChild(errorMessageText);
+            }
+        } else{
+            inpDevs.offsetParent.classList.remove('has-error');
+            inpDevs.offsetParent.lastChild.innerHTML = '';
+        }
+    }
+
+    // поле e-mail
+    inpEmail.onchange = function () {
+        var validEmail = false;
+        var inpEmailVal = inpEmail.value;
+        var inpEmailArr = inpEmailVal.split('');
+
+        for (var i = 0; i<inpEmailArr.length; i++){
+            if(inpEmailArr[i] == '@'){
+                validEmail = true;
+                break;
+            }
+        }
+
+        if(!validEmail){
+            inpEmail.offsetParent.classList.add('has-error');
+            var errorMessageText = document.createTextNode('Введите корректный e-mail');
+            if(!(inpEmail.offsetParent.lastChild.innerHTML.length)){
+                inpEmail.offsetParent.lastChild.appendChild(errorMessageText);
+            }
+
+        } else{
+            inpEmail.offsetParent.classList.remove('has-error');
+            inpEmail.offsetParent.lastChild.innerHTML = '';
+        }
+    };
+
+    _description.addEventListener('change', _textarea, true);
+    function _textarea() {
+        var valDescription = _description.value;
+        if(valDescription.length < 100){
+            descParent.classList.add('has-error');
+            if(!(descParent.lastChild.innerHTML.length)){
+                descParent.lastChild.appendChild(descErrorText);
+            }
+        } else {
+            descParent.classList.remove('has-error');
+            descParent.lastChild.innerHTML = '';
+        }
+    }
+
+
+//    валидация всей формы
+    function formValidate() {
+
+        try{
+
+            var firstInvalidField = document.getElementsByClassName('has-error');
+
+            var inpDevsVal = inpDevs.value;
+
+            var validEmail = false;
+            var inpEmailVal = inpEmail.value;
+            var inpEmailArr = inpEmailVal.split('');
+
+
+            var placeCheck = placement.value;
+            var _parent = document.querySelector('.radio');
+
+            var valDescription = _description.value;
+
+//            поле - разработчики
+            if((inpDevsVal.length > 10) || (inpDevsVal.length == 0)) {
+                inpDevs.offsetParent.classList.add('has-error');
+                var errorMessageText = document.createTextNode(inpDevs.getAttribute('placeholder'));
+                if(!(inpDevs.offsetParent.lastChild.innerHTML.length)){
+                    inpDevs.offsetParent.lastChild.appendChild(errorMessageText);
+                }
+            } else{
+                inpDevs.offsetParent.classList.remove('has-error');
+                inpDevs.offsetParent.lastChild.innerHTML = '';
+            }
+
+
+//            Поле - размещение
+            for(var i = 0; i< placement.length; i++){
+
+                    if(placeCheck==""){
+                        _parent.classList.add('has-error');
+
+                        if(!(_parent.offsetParent.lastChild.innerHTML.length)){
+                            _parent.offsetParent.lastChild.appendChild(placementTextError);
+                        }
+                    } else {
+                        _parent.classList.remove('has-error');
+                        _parent.offsetParent.lastChild.innerHTML = "";
+                    }
+            }
+
+
+//            Поле e-mail
+            for (var i = 0; i<inpEmailArr.length; i++){
+                if(inpEmailArr[i] == '@'){
+                    validEmail = true;
+                    break;
+                }
+            }
+
+            if(!validEmail){
+                inpEmail.offsetParent.classList.add('has-error');
+                var errorMessageText = document.createTextNode('Введите корректный e-mail');
+                if(!(inpEmail.offsetParent.lastChild.innerHTML.length)){
+                    inpEmail.offsetParent.lastChild.appendChild(errorMessageText);
+                }
+
+            } else{
+                inpEmail.offsetParent.classList.remove('has-error');
+                inpEmail.offsetParent.lastChild.innerHTML = '';
+            }
+
+//            поле - описание
+            if(valDescription.length < 100){
+                descParent.classList.add('has-error');
+                if(!(descParent.lastChild.innerHTML.length)){
+                    descParent.lastChild.appendChild(descErrorText);
+                }
+                return false;
+            } else {
+                descParent.classList.remove('has-error');
+                descParent.lastChild.innerHTML = '';
+            }
+
+
+            firstInvalidField.scrollIntoView();
+            firstInvalidField.focus();
+
+            return true;
+        }
+        catch (e){
+                  return false;
+        }
+
+
+    }
+
+    _form.onsubmit = formValidate;
+
+
+
+</script>
+
+</body>
+</html>

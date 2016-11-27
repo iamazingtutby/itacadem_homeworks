@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document title imgs move</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        ._container{
+            position: relative;
+            width: 1000px;
+            height: 1000px;
+            max-width: 100%;
+        }
+        .img{
+            position: absolute;
+            display: block;
+        }
+        .img.i1{
+            left: 200px;
+            top: 90px;
+        }
+        .img.i2{
+            top: 20px;
+            left: 180px;
+        }
+        .img.i3{
+            top: 0;
+            left: 0;
+        }
+        .img.i4{
+            left: 50px;
+            top: 150px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="/itacadem_homeworks/hw1.html">дз №1</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw2/index.html">дз №2</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw3/index.html">дз №3</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw4/createPage.html">дз №4</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw5/btns.html">дз №5</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw6/validForm.html">дз №6</a>
+            </li>
+            <li>
+                <a href="/itacadem_homeworks/hw7/moveImg.html">дз №7</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="_container">
+    <img class="img i1" id="_im" src="http://lorempixel.com/200/200/sports/" alt="">
+    <img class="img i2" src="http://lorempixel.com/150/150/animals/" alt="">
+    <img class="img i3" src="http://lorempixel.com/190/190/food/" alt="">
+    <img class="img i4" src="http://lorempixel.com/100/100/cats/" alt="">
+</div>
+
+
+<script>
+
+    var _imgs = document.getElementsByClassName('img');
+    console.log(_imgs);
+
+    for (var i = 0; i<_imgs.length; i++) {
+        var imgA = _imgs[i];
+        var container = document.getElementsByClassName('container');
+
+        var _left;
+        var _top;
+
+        imgA.onmousedown = function (e) {
+            var imgA = e.target;
+            imgA.style.zIndex = _imgs.length;
+            _left = e.pageX;
+            _top = e.pageY;
+
+            console.log(_left, _top);
+        };
+
+
+        imgA.onmousemove = function (e) {
+            var imgA = e.target;
+            e.preventDefault();
+            var left = e.pageX;
+            var top = e.pageY;
+
+
+            imgA.style.left = left - _left/2 + 'px';
+            imgA.style.top = top - _top/2 + 'px';
+        };
+        imgA.onmouseup = function (e) {
+            var imgA = e.target;
+            imgA.onmousedown = function () {
+
+            };
+            imgA.onmousemove = function () {
+
+            }
+        };
+
+
+
+
+    }
+
+
+
+
+</script>
+
+</body>
+</html>

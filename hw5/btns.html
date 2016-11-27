@@ -7,7 +7,6 @@
 </head>
 <body>
 
-<div class="container">
 <nav class="navbar navbar-default">
     <div class="container">
         <ul class="nav navbar-nav">
@@ -23,19 +22,38 @@
             <li>
                 <a href="/itacadem_homeworks/hw4/createPage.html">дз №4</a>
             </li>
-                        <li>
-                <a href="/itacadem_homeworks/hw5/btns.html">дз №5</a>
-            </li>
-            <li>
-                <a href="/itacadem_homeworks/hw6/validForm.html">дз №6</a>
-            </li>
-            <li>
-                <a href="/itacadem_homeworks/hw7/moveImg.html">дз №7</a>
-            </li>
         </ul>
     </div>
 </nav>
+
+<div class="container">
+    <button data-href="http://tut.by">btn1</button>
+    <button data-href="http://ya.ru">btn2</button>
+    <button data-href="http://gmail.com">btn3</button>
 </div>
+
+
+
+<script>
+
+
+    var btn = document.getElementsByTagName('button');
+
+    console.log(btn);
+
+    for(var i = 0; i < btn.length; i++){
+
+        btn[i].onclick = function () {
+            var dHref = this.getAttribute('data-href');
+            window.location.href = dHref;
+        }
+
+    }
+
+
+
+</script>
+
 
 </body>
 </html>
