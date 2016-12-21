@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+    <script src="jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        .form-item{
+            margin-bottom: 15px;
+        }
+        .formwrap{
+            margin: 20px;
+        }
+        div.error{
+            color: red;
+        }
+        input.myErrClass{
+            border: 2px solid red;
+        }
+
+    </style>
+</head>
+<body>
+
+<button id="get">Apply</button>
+
+<div class="formwrap">
+
+</div>
+
+<script>
+        $('#get').on('click', function () {
+            $.ajax({
+                url: '/form.html',
+                type: 'get',
+                cache: false,
+                success: function (data) {
+                    $('.formwrap').html(data);
+                    validateForm();
+                },
+                error: function () {
+                    console.log('error');
+                }
+            })
+        });
+
+        function validateForm() {
+
+            function phoneValidator(value, elem, args) {
+                if ( value.length==false ){
+                    return false;
+                }
+                return /^\+375\-(?:17|25|33|44|29)\-\d{3}\-\d{2}\-\d{2}$/.test(value);
+            }
+
+            $.validator.addMethod('phone_detect',phoneValidator,'Введите корректный телефон');
+
+            function S_Error(el, errClass) {
+                errClass = 'myErrClass';
+                $(el).addClass(errClass);
+            }
+
+            function H_Error(el, errClass) {
+                errClass = 'myErrClass';
+                $(el).removeClass(errClass);
+            }
+
+            $('#myForm').validate({
+
+                rules: {
+                    name: {rangelength: [4,12] },
+                    age: { min: 16, max: 40 },
+                    phone: { required: true, phone_detect: true},
+                    mail: {email: true}
+                },
+
+                messages: {
+                    name:
+                    {
+                        rangelength:'Имя должно быть от 4 до 12 символов!'
+                    },
+                    age:
+                    {
+                        min:'Вам ещё рано сюда!',
+                        max:'Вам уже поздно сюда!'
+                    },
+                    phone:
+                    {
+                        required:'Обязательное поле!'
+                    },
+                    mail:
+                    {
+                        email: 'Введите корректный e-mail!'
+                    }
+                },
+
+                errorElement: 'div',
+                errorClass: 'error',
+                highlight: S_Error,
+                unhighlight: H_Error
+
+            });
+        }
+</script>
+
+</body>
+</html>

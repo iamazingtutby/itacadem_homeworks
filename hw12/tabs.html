@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script src="jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <style>
+        li{
+            border: 0;
+        }
+        li.active{
+            border-bottom: 1px solid gray;
+        }
+        .divBlock{
+            display: none;
+        }
+        .divBlock.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="tabsWrap">
+    <ul class="tabsli">
+        <li dataind="1" class="active">Первый</li>
+        <li dataind="2">Второй</li>
+        <li dataind="3">Третий</li>
+        <li dataind="4">Четвертый</li>
+    </ul>
+    <div class="divsWrap">
+        <div dataind="1" class="divBlock active">ПервыйПервыйПервыйПервыйПервый</div>
+        <div dataind="2" class="divBlock">ВторойВторойВторойВторой</div>
+        <div dataind="3" class="divBlock">ТретийТретийТретийТретийТретий</div>
+        <div dataind="4" class="divBlock">ЧетвертыйЧетвертыйЧетвертыйЧетвертыйЧетвертый</div>
+    </div>
+</div>
+
+
+<script>
+    $('li').on('click', function () {
+        $('ul li, .divBlock').removeClass('active');
+        $(this).addClass('active');
+
+        var _eq = $(this).attr('dataind');
+//        console.log(_eq);
+
+        $('.divBlock[dataind=' + _eq + ']').addClass('active')
+
+
+
+    })
+</script>
+
+</body>
+</html>
